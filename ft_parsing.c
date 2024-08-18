@@ -6,11 +6,36 @@
 /*   By: bjniane <bjniane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 01:27:35 by bjniane           #+#    #+#             */
-/*   Updated: 2024/08/17 03:02:18 by bjniane          ###   ########.fr       */
+/*   Updated: 2024/08/18 09:27:26 by bjniane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int  isdigit(int c)
+{
+    if (c >= '0' && c <= '9')
+        return (1);
+    return (0);
+}
+
+int	check(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+        if (av[i] == '-')
+            ft_error("Eroor\nOnly positive numbers\n");
+        if (av[i] == '+' && (isdigit(av[i + 1])))
+            i++;
+		if (!(isdigit(av[i])))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 static int    ft_atoi(char *str)
 {
@@ -25,22 +50,22 @@ static int    ft_atoi(char *str)
         i++;
     if (str[i] == '+')
         i++;
-    else if (str[i] == '-')
-        ft_error("Error\nonly positive numbers");
-    if (!(str[i] >= '0' && str[i] <= '9'))
-        ft_error("Error\nthe input is not a correct digit");
+    // else if (str[i] == '-')
+    //     ft_error("Error\nonly positive numbers");
     while (str[i] >= '0' && str[i] <= '9')
     {
         result = result * 10 + (str[i] - '0');
         i++;
     }
-    if ((result * sign) > INT_MAX)
+    if ((result * sign) > 2147483647)
         ft_error("Error\nthe value is bigger than INT_MAX");
     return (result * sign);
 }
 
 void    ft_parsing(t_data *data, char **av)
 {
+    if (!check(av[1]) || !check(av[2]) || !check(av[3]) || !check(av[4]))
+        ft_error("Error\nWrong input\n");
     data->n_philo = ft_atoi(av[1]);
     if (data->n_philo > 200 || data->n_philo == 0)
         ft_error("Error\nUse a number ranging from 1 to 200\n");

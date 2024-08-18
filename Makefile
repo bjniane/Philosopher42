@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  -g3 -fsanitize=thread  #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror  #-g3 -fsanitize=thread  #-fsanitize=address
 RM = rm -rf
 
 SRCS = ft_init.c\
