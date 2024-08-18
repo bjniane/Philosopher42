@@ -6,7 +6,7 @@
 /*   By: bjniane <bjniane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 01:27:35 by bjniane           #+#    #+#             */
-/*   Updated: 2024/08/18 09:27:26 by bjniane          ###   ########.fr       */
+/*   Updated: 2024/08/18 10:25:07 by bjniane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int  isdigit(int c)
     return (0);
 }
 
-int	check(char *av)
+static int	check(char *av)
 {
 	int	i;
 
