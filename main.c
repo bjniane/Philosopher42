@@ -6,7 +6,7 @@
 /*   By: bjniane <bjniane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 01:27:43 by bjniane           #+#    #+#             */
-/*   Updated: 2024/08/17 07:07:03 by bjniane          ###   ########.fr       */
+/*   Updated: 2024/08/18 09:54:10 by bjniane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void    clean(char *str, t_data *data)
         pthread_mutex_destroy(&data->forks[i]);
         i++;
     }
+    free(data->philos);
+    free(data->forks);
 }
 
 int check_full(t_philo *philo)
@@ -56,7 +58,7 @@ void    *routine(void *philo)
     {
         pthread_mutex_unlock(&philos->data->mutex);
         eat(philos);
-        if (check_full(philo))
+        if (check_full(philo)) //TO UPDATE after sleeping
             return (NULL);
         ft_sleep(philos);
         think(philos);
