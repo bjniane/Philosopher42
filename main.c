@@ -6,7 +6,7 @@
 /*   By: bjniane <bjniane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 01:27:43 by bjniane           #+#    #+#             */
-/*   Updated: 2024/08/18 09:54:10 by bjniane          ###   ########.fr       */
+/*   Updated: 2024/08/19 00:13:27 by bjniane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void    *routine(void *philo)
 int creat_threads(t_data *data)
 {
     long    i;
+    pthread_t thread;
 
     i = -1;
     data->start_simulation = get_current_time();
@@ -80,7 +81,10 @@ int creat_threads(t_data *data)
         if (pthread_create(&data->philos[i].th, NULL, &routine, &data->philos[i]) != 0)
             clean("Error\nThread creation failed\n", data);
     }
-    monitor(data);
+    if (pthread_create(&thread, NULL, &monitor, data) != 0)
+            clean("Error\nThread creation failed\n", data);
+    if (pthread_join(thread, NULL) != 0)
+        ft_error("Error\nThread join failed");
     i = -1;
     while (++i < data->n_philo)
     {

@@ -1,4 +1,7 @@
 #include "philo.h"
+
+//This test for data races
+
 int count = 0;
 pthread_mutex_t mutex;
 void    *routine()
