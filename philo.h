@@ -6,7 +6,7 @@
 /*   By: bjniane <bjniane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 01:27:55 by bjniane           #+#    #+#             */
-/*   Updated: 2024/08/17 09:38:33 by bjniane          ###   ########.fr       */
+/*   Updated: 2024/08/18 23:54:47 by bjniane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_philo
 {
     pthread_t   th;
     int     id;
-    long    meals_counter; // meals eaten depent on aarg nb 5;
+    long    meals_counter; // meals eaten depent on arg 5;
     long    last_meal; //last meal eaten
     bool    full;
     pthread_mutex_t *r_fork;
